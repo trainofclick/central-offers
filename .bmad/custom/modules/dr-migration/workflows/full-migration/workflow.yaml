@@ -1,0 +1,65 @@
+# Full Migration Workflow Configuration
+name: full-migration
+description: "Migração completa guiada de HTML para Astro com todas as 5 fases e integração de packages"
+author: "DR Migration Module"
+
+# Critical variables load from config_source
+config_source: "{project-root}/.bmad/dr-migration/config.yaml"
+user_name: "{config_source}:user_name"
+communication_language: "{config_source}:communication_language"
+source_folder: "{config_source}:source_folder"
+target_folder: "{config_source}:target_folder"
+product_category: "{config_source}:product_category"
+include_tracking: "{config_source}:include_tracking"
+include_payment: "{config_source}:include_payment"
+include_security: "{config_source}:include_security"
+
+# Module paths
+installed_path: "{project-root}/.bmad/dr-migration"
+templates_path: "{installed_path}/templates"
+data_path: "{installed_path}/data"
+starter_kit_path: "{installed_path}/starter-kit"
+
+# Workflow components
+template: "{installed_path}/workflows/full-migration/template.md"
+instructions: "{installed_path}/workflows/full-migration/instructions.md"
+validation: "{installed_path}/workflows/full-migration/checklist.md"
+
+# Output configuration
+default_output_file: "{config_source}:output_folder/migration-report-{{date}}.md"
+
+# Input file patterns - discover existing project files
+input_file_patterns:
+  analysis_report:
+    description: "Relatório de análise anterior (se existir)"
+    whole: "{config_source}:output_folder/*analysis*.md"
+    load_strategy: "FULL_LOAD"
+
+standalone: true
+
+# Workflow metadata
+phases:
+  - phase: 1
+    name: "Análise"
+    agent: "analista"
+    description: "Analisar estrutura do projeto HTML"
+
+  - phase: 2
+    name: "Setup"
+    agent: "migrador"
+    description: "Criar projeto Astro e configurar ambiente"
+
+  - phase: 3
+    name: "Migração"
+    agent: "migrador"
+    description: "Converter HTML para componentes Astro"
+
+  - phase: 4
+    name: "Integração"
+    agent: "migrador"
+    description: "Adicionar packages (tracking, payment, security)"
+
+  - phase: 5
+    name: "Validação"
+    agent: "validador"
+    description: "Validar resultado final"

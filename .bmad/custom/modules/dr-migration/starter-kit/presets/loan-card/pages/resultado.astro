@@ -1,0 +1,316 @@
+---
+/**
+ * Results Page - LOAN-CARD Preset
+ * Página de resultados com ofertas de parceiros
+ */
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/astro/Section.astro";
+import Card from "@components/astro/Card.astro";
+import Button from "@components/astro/Button.astro";
+
+const pageTitle = "Suas Ofertas Personalizadas";
+const pageDescription = "Confira as melhores ofertas de crédito selecionadas para você";
+
+// Partner offers (in production, these would come from API/database)
+const offers = [
+  {
+    id: 1,
+    partnerName: "Banco Premium",
+    logo: "🏦",
+    type: "Cartão de Crédito",
+    title: "Cartão Platinum sem anuidade",
+    benefits: [
+      "Limite de até R$ 15.000",
+      "Cashback de 2% em todas as compras",
+      "Anuidade ZERO no primeiro ano",
+      "Aceito em milhões de estabelecimentos",
+    ],
+    cta: "SOLICITAR AGORA",
+    ctaUrl: "#",
+    highlight: true,
+  },
+  {
+    id: 2,
+    partnerName: "Fintech Digital",
+    logo: "💳",
+    type: "Empréstimo Pessoal",
+    title: "Empréstimo de até R$ 50.000",
+    benefits: [
+      "Taxa a partir de 1,99% ao mês",
+      "Até 36x para pagar",
+      "Dinheiro na conta em 24h",
+      "Sem consulta ao SPC/Serasa",
+    ],
+    cta: "VER OFERTA",
+    ctaUrl: "#",
+    highlight: false,
+  },
+  {
+    id: 3,
+    partnerName: "Crédito Fácil",
+    logo: "💰",
+    type: "Crédito Consignado",
+    title: "Consignado para Aposentados",
+    benefits: [
+      "Taxas a partir de 1,2% ao mês",
+      "Até 84x para pagar",
+      "Desconto direto do INSS",
+      "Aprovação em minutos",
+    ],
+    cta: "SIMULAR AGORA",
+    ctaUrl: "#",
+    highlight: false,
+  },
+  {
+    id: 4,
+    partnerName: "Super Card",
+    logo: "🎯",
+    type: "Cartão de Crédito",
+    title: "Cartão Gold com Milhas",
+    benefits: [
+      "Acumule milhas em compras",
+      "Programa de pontos exclusivo",
+      "Limite pré-aprovado",
+      "App com controle de gastos",
+    ],
+    cta: "PEDIR CARTÃO",
+    ctaUrl: "#",
+    highlight: false,
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Success Header -->
+  <Section background="gradient" padding="lg">
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="text-6xl mb-4">✅</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-secondary mb-4">
+        Análise Concluída!
+      </h1>
+      <p class="text-xl text-text-muted mb-2">
+        Encontramos <strong class="text-primary">{offers.length} ofertas</strong
+        > perfeitas para o seu perfil
+      </p>
+      <p class="text-sm text-text-muted">
+        Compare e escolha a melhor opção para você
+      </p>
+    </div>
+  </Section>
+
+  <!-- Offers Section -->
+  <Section padding="lg">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid gap-6">
+        {
+          offers.map((offer) => (
+            <Card
+              variant={offer.highlight ? "elevated" : "default"}
+              class={`relative ${offer.highlight ? "border-2 border-primary shadow-xl" : ""}`}
+            >
+              {offer.highlight && (
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-white text-sm font-bold rounded-full">
+                  MELHOR OFERTA
+                </div>
+              )}
+
+              <div class="md:flex gap-6 items-start">
+                {/* Partner Logo */}
+                <div class="flex-shrink-0 mb-4 md:mb-0">
+                  <div class="w-24 h-24 bg-gradient-to-br from-primary/10 to-primary/20 rounded-2xl flex items-center justify-center text-5xl">
+                    {offer.logo}
+                  </div>
+                </div>
+
+                {/* Offer Details */}
+                <div class="flex-1">
+                  <div class="mb-4">
+                    <div class="text-sm text-primary font-medium mb-1">
+                      {offer.type}
+                    </div>
+                    <h3 class="text-2xl font-bold text-secondary mb-2">
+                      {offer.title}
+                    </h3>
+                    <p class="text-sm text-text-muted">{offer.partnerName}</p>
+                  </div>
+
+                  {/* Benefits */}
+                  <ul class="space-y-2 mb-6">
+                    {offer.benefits.map((benefit) => (
+                      <li class="flex items-start gap-2">
+                        <svg
+                          class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                        <span class="text-text-muted">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <Button
+                    href={offer.ctaUrl}
+                    variant={offer.highlight ? "success" : "primary"}
+                    size="lg"
+                    class="w-full md:w-auto"
+                    data-event="partner_click"
+                    data-partner={offer.partnerName}
+                  >
+                    {offer.cta}
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <!-- Why These Offers Section -->
+  <Section background="surface" padding="lg">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-secondary mb-4">
+          Por Que Estas Ofertas?
+        </h2>
+        <p class="text-text-muted">
+          Selecionamos as melhores ofertas baseado no seu perfil
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {
+          [
+            {
+              icon: "🎯",
+              title: "Pré-Aprovadas",
+              desc: "Todas as ofertas têm alta chance de aprovação para você",
+            },
+            {
+              icon: "💎",
+              title: "Melhores Taxas",
+              desc: "Negociamos taxas exclusivas com nossos parceiros",
+            },
+            {
+              icon: "⚡",
+              title: "Aprovação Rápida",
+              desc: "Processo simplificado e decisão em minutos",
+            },
+          ].map((item) => (
+            <div class="text-center">
+              <div class="text-4xl mb-3">{item.icon}</div>
+              <h3 class="font-bold text-secondary mb-2">{item.title}</h3>
+              <p class="text-sm text-text-muted">{item.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <!-- Additional Info -->
+  <Section padding="lg">
+    <div class="max-w-4xl mx-auto">
+      <Card variant="elevated">
+        <div class="md:flex items-center gap-6">
+          <div class="text-5xl mb-4 md:mb-0">📱</div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-secondary mb-2">
+              Receba Suas Ofertas no WhatsApp
+            </h3>
+            <p class="text-text-muted mb-4">
+              Enviamos todas as ofertas diretamente no seu WhatsApp para você
+              não perder nenhuma oportunidade!
+            </p>
+            <p class="text-sm text-primary font-medium">
+              Verifique suas mensagens para mais detalhes
+            </p>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <Section background="surface" padding="lg">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-secondary mb-4">
+          Dúvidas Frequentes
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {
+          [
+            {
+              q: "As ofertas são garantidas?",
+              a: "As ofertas são pré-aprovadas com base no seu perfil, mas a aprovação final depende da análise de cada instituição financeira.",
+            },
+            {
+              q: "Vou pagar algo pela consulta?",
+              a: "Não! A consulta é 100% gratuita. Você só paga se decidir contratar alguma das ofertas.",
+            },
+            {
+              q: "Posso contratar mais de uma oferta?",
+              a: "Sim! Você pode solicitar quantas ofertas quiser. Cada instituição fará sua própria análise.",
+            },
+            {
+              q: "Quanto tempo leva para receber o crédito?",
+              a: "Depende da instituição, mas geralmente o processo é concluído em 24-48 horas após a aprovação.",
+            },
+          ].map((item) => (
+            <Card>
+              <h3 class="font-bold text-secondary mb-2">{item.q}</h3>
+              <p class="text-text-muted text-sm">{item.a}</p>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <!-- Final CTA -->
+  <Section background="dark" padding="lg">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold text-white mb-4">
+        Não Perca Estas Oportunidades!
+      </h2>
+      <p class="text-gray-300 mb-6">
+        Estas ofertas são exclusivas e por tempo limitado. Clique em "Solicitar"
+        nas ofertas acima para garantir a sua.
+      </p>
+      <p class="text-sm text-gray-400">
+        Dúvidas? Entre em contato pelo WhatsApp: (11) 99999-9999
+      </p>
+    </div>
+  </Section>
+
+  <!-- Track CompleteRegistration -->
+  <script>
+    import { fbEvents } from "@lib/tracking";
+    fbEvents.completeRegistration({
+      contentName: "Results Page",
+      contentCategory: "LEAD_GENERATION",
+    });
+  </script>
+
+  <!-- Load lead data from localStorage -->
+  <script>
+    // Get lead data from localStorage
+    const leadData = localStorage.getItem("leadData");
+    if (leadData) {
+      const data = JSON.parse(leadData);
+      console.log("Lead data:", data);
+      // Here you could send to your backend/CRM
+    }
+  </script>
+</BaseLayout>

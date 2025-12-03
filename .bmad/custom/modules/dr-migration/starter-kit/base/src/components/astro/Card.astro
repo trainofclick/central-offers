@@ -1,0 +1,42 @@
+---
+/**
+ * Card.astro
+ * Componente de card container reutilizável
+ */
+
+interface Props {
+  variant?: "default" | "elevated" | "bordered" | "gradient";
+  padding?: "none" | "sm" | "md" | "lg";
+  class?: string;
+}
+
+const {
+  variant = "default",
+  padding = "md",
+  class: className = "",
+} = Astro.props;
+
+const baseStyles = "rounded-xl";
+
+const variants = {
+  default: "bg-white shadow-md",
+  elevated: "bg-white shadow-lg hover:shadow-xl transition-shadow",
+  bordered: "bg-white border border-border",
+  gradient: "bg-gradient-to-br from-primary/5 to-accent/5 border border-border",
+};
+
+const paddings = {
+  none: "",
+  sm: "p-4",
+  md: "p-6",
+  lg: "p-8",
+};
+
+const classes = [baseStyles, variants[variant], paddings[padding], className]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<div class={classes}>
+  <slot />
+</div>

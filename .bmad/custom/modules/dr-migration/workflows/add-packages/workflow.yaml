@@ -1,0 +1,47 @@
+# Add Packages Workflow Configuration
+name: add-packages
+description: "Adicionar packages (tracking, payment, security) a um projeto Astro existente"
+author: "DR Migration Module"
+
+# Critical variables load from config_source
+config_source: "{project-root}/.bmad/dr-migration/config.yaml"
+user_name: "{config_source}:user_name"
+communication_language: "{config_source}:communication_language"
+target_folder: "{config_source}:target_folder"
+
+# Module paths
+installed_path: "{project-root}/.bmad/dr-migration"
+
+# Workflow components
+template: false  # Action workflow
+instructions: "{installed_path}/workflows/add-packages/instructions.md"
+
+standalone: true
+
+# Available packages
+packages:
+  tracking:
+    name: "Tracking Snippets"
+    includes:
+      - "UTMify Script"
+      - "Facebook Pixel"
+      - "Rybbit Analytics"
+      - "UTM Capture"
+
+  payment:
+    name: "Payment Gateway"
+    includes:
+      - "Umbrella API Client"
+      - "PIX Generation"
+      - "Payment Polling"
+      - "Webhook Handler"
+    requires:
+      - "output: 'server' in astro.config"
+
+  security:
+    name: "Security Anti-Clone"
+    includes:
+      - "DevTools Blocker"
+      - "Console Override"
+      - "Keyboard Blocker"
+      - "Cloaking Middleware"

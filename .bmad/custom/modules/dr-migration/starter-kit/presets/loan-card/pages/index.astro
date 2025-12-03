@@ -1,0 +1,298 @@
+---
+/**
+ * Landing Page - LOAN-CARD Preset
+ * Página inicial com benefícios financeiros e CTAs
+ */
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/astro/Section.astro";
+import Button from "@components/astro/Button.astro";
+import Card from "@components/astro/Card.astro";
+import Timer from "@components/react/Timer";
+
+const pageTitle = "Crédito Aprovado em Minutos";
+const pageDescription = "Encontre as melhores ofertas de cartões de crédito e empréstimos";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <Section background="gradient" padding="xl">
+    <div class="text-center max-w-4xl mx-auto">
+      <!-- Badge -->
+      <div
+        class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6"
+      >
+        Consulta 100% Grátis e Sem Compromisso
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-secondary mb-6">
+        Crédito Aprovado
+        <span class="gradient-text">em Minutos</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-xl text-text-muted mb-8 max-w-2xl mx-auto">
+        Compare as melhores ofertas de cartões de crédito e empréstimos
+        personalizados para o seu perfil. Consulta gratuita e análise
+        instantânea.
+      </p>
+
+      <!-- Timer -->
+      <div class="mb-8">
+        <Timer client:load initialMinutes={15} prefix="Oferta especial expira em:" />
+      </div>
+
+      <!-- CTA Button -->
+      <Button
+        href="/cadastro"
+        variant="success"
+        size="xl"
+        class="animate-pulse-slow"
+        data-event="cta_click"
+      >
+        CONSULTAR MEU CRÉDITO GRÁTIS
+      </Button>
+
+      <!-- Trust indicators -->
+      <div class="mt-6 flex items-center justify-center gap-6 text-sm text-text-muted">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>Consulta Grátis</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>Sem Compromisso</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span>100% Seguro</span>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Benefits Section -->
+  <Section id="beneficios" padding="lg">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-secondary mb-4">
+        Vantagens em Consultar Seu Crédito
+      </h2>
+      <p class="text-text-muted max-w-2xl mx-auto">
+        Encontre as melhores ofertas personalizadas para o seu perfil
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {
+        [
+          {
+            icon: "💳",
+            title: "Cartões de Crédito",
+            desc: "Cartões com cashback, milhas e anuidade zero. Aprovação rápida e sem burocracia.",
+          },
+          {
+            icon: "💰",
+            title: "Empréstimos Pessoais",
+            desc: "Taxas competitivas e parcelas que cabem no seu bolso. Dinheiro na conta em 24h.",
+          },
+          {
+            icon: "🏦",
+            title: "Crédito Consignado",
+            desc: "Menores taxas do mercado com desconto direto na folha. Ideal para aposentados.",
+          },
+        ].map((item) => (
+          <Card variant="elevated" class="text-center">
+            <div class="text-5xl mb-4">{item.icon}</div>
+            <h3 class="text-xl font-bold text-secondary mb-2">{item.title}</h3>
+            <p class="text-text-muted">{item.desc}</p>
+          </Card>
+        ))
+      }
+    </div>
+
+    <!-- Additional Benefits Grid -->
+    <div class="grid md:grid-cols-2 gap-6 mt-8">
+      {
+        [
+          {
+            icon: "⚡",
+            title: "Análise Instantânea",
+            desc: "Resultado em segundos sem afetar seu score de crédito",
+          },
+          {
+            icon: "🎯",
+            title: "Ofertas Personalizadas",
+            desc: "Compare as melhores opções para o seu perfil",
+          },
+          {
+            icon: "🔒",
+            title: "Dados Protegidos",
+            desc: "Suas informações são criptografadas e seguras",
+          },
+          {
+            icon: "🤝",
+            title: "Parceiros Confiáveis",
+            desc: "Trabalhamos com as maiores instituições do país",
+          },
+        ].map((item) => (
+          <Card class="flex items-start gap-4">
+            <div class="text-3xl flex-shrink-0">{item.icon}</div>
+            <div>
+              <h3 class="text-lg font-bold text-secondary mb-1">{item.title}</h3>
+              <p class="text-text-muted text-sm">{item.desc}</p>
+            </div>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- How It Works Section -->
+  <Section id="como-funciona" background="surface" padding="lg">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-secondary mb-4">Como Funciona</h2>
+      <p class="text-text-muted max-w-2xl mx-auto">
+        Simples, rápido e sem complicação
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-6">
+        {
+          [
+            {
+              step: "1",
+              title: "Preencha seus dados",
+              desc: "CPF, nome, telefone e email",
+            },
+            {
+              step: "2",
+              title: "Análise instantânea",
+              desc: "Verificamos seu perfil em segundos",
+            },
+            {
+              step: "3",
+              title: "Receba ofertas",
+              desc: "Veja as melhores opções para você",
+            },
+            {
+              step: "4",
+              title: "Escolha e contrate",
+              desc: "Compare e escolha a melhor oferta",
+            },
+          ].map((item) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                {item.step}
+              </div>
+              <h3 class="text-lg font-bold text-secondary mb-2">{item.title}</h3>
+              <p class="text-text-muted text-sm">{item.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <!-- Trust Badges Section -->
+  <Section id="confianca" padding="lg">
+    <div class="text-center">
+      <h2 class="text-2xl font-bold text-secondary mb-8">
+        Instituições Parceiras
+      </h2>
+      <div class="flex flex-wrap items-center justify-center gap-8 opacity-60">
+        <div class="text-3xl font-bold text-secondary">BANCO A</div>
+        <div class="text-3xl font-bold text-secondary">BANCO B</div>
+        <div class="text-3xl font-bold text-secondary">FINTECH C</div>
+        <div class="text-3xl font-bold text-secondary">BANCO D</div>
+      </div>
+      <p class="mt-6 text-sm text-text-muted">
+        + de 50 instituições financeiras parceiras
+      </p>
+    </div>
+  </Section>
+
+  <!-- FAQ Section -->
+  <Section id="faq" background="surface" padding="lg">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-secondary mb-4">
+          Perguntas Frequentes
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {
+          [
+            {
+              q: "A consulta é realmente gratuita?",
+              a: "Sim! A consulta é 100% gratuita e sem compromisso. Você só paga se decidir contratar alguma das ofertas.",
+            },
+            {
+              q: "A consulta afeta meu score de crédito?",
+              a: "Não! Nossa análise é feita sem consulta ao SPC/Serasa, portanto não afeta seu score de crédito.",
+            },
+            {
+              q: "Quanto tempo leva para receber as ofertas?",
+              a: "A análise é instantânea! Em poucos segundos você recebe as melhores ofertas para seu perfil.",
+            },
+            {
+              q: "Meus dados estão seguros?",
+              a: "Sim! Utilizamos criptografia de ponta e seguimos todas as normas da LGPD para proteger suas informações.",
+            },
+          ].map((item) => (
+            <Card>
+              <h3 class="text-lg font-bold text-secondary mb-2">{item.q}</h3>
+              <p class="text-text-muted">{item.a}</p>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <!-- Final CTA Section -->
+  <Section background="dark" padding="xl">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        Pronto Para Encontrar Seu Crédito Ideal?
+      </h2>
+      <p class="text-gray-300 mb-8">
+        Consulta gratuita em segundos. Compare ofertas e escolha a melhor para
+        você. Sem compromisso e totalmente seguro.
+      </p>
+
+      <Button href="/cadastro" variant="success" size="xl">
+        CONSULTAR GRÁTIS AGORA
+      </Button>
+
+      <p class="mt-4 text-sm text-gray-400">
+        Análise instantânea • Sem afetar seu score • 100% Seguro
+      </p>
+    </div>
+  </Section>
+
+  <!-- Track ViewContent -->
+  <script>
+    import { fbEvents } from "@lib/tracking";
+    fbEvents.viewContent({
+      contentName: "Landing Page",
+      contentCategory: "LEAD_GENERATION",
+    });
+  </script>
+</BaseLayout>

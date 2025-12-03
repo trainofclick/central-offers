@@ -1,0 +1,70 @@
+---
+/**
+ * Lead Capture Form - LOAN-CARD Preset
+ * Formulário multi-step para captura de dados do lead
+ */
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/astro/Section.astro";
+import LeadForm from "../components/LeadForm";
+
+const pageTitle = "Cadastro - Consulte seu Crédito";
+const pageDescription = "Preencha seus dados para consultar ofertas personalizadas";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Form Section -->
+  <Section background="gradient" padding="xl" class="min-h-screen flex items-center">
+    <div class="w-full">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <a
+          href="/"
+          class="inline-block text-text-muted hover:text-secondary transition mb-6"
+        >
+          <svg
+            class="w-6 h-6 inline mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          Voltar
+        </a>
+
+        <h1 class="text-3xl md:text-4xl font-bold text-secondary mb-4">
+          Consulte Seu Crédito
+        </h1>
+        <p class="text-text-muted max-w-2xl mx-auto">
+          Preencha seus dados para receber ofertas personalizadas. Leva menos
+          de 1 minuto!
+        </p>
+      </div>
+
+      <!-- Lead Form Component -->
+      <LeadForm client:load />
+
+      <!-- Trust Indicators -->
+      <div class="max-w-md mx-auto mt-8">
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <div class="text-2xl mb-2">🔒</div>
+            <p class="text-xs text-text-muted">Dados Seguros</p>
+          </div>
+          <div>
+            <div class="text-2xl mb-2">⚡</div>
+            <p class="text-xs text-text-muted">Análise Rápida</p>
+          </div>
+          <div>
+            <div class="text-2xl mb-2">✓</div>
+            <p class="text-xs text-text-muted">Sem Compromisso</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,168 @@
+---
+/**
+ * BaseLayout.astro
+ * Layout base para todas as páginas do projeto DR
+ * Inclui: meta tags, tracking scripts, estilos globais
+ */
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description = "Descrição padrão do produto",
+  ogImage = "/og-image.jpg",
+  noIndex = false,
+} = Astro.props;
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || Astro.url.origin;
+const siteName = import.meta.env.PUBLIC_SITE_NAME || "DR Product";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+
+// Tracking IDs from environment
+const fbPixelId = import.meta.env.PUBLIC_FB_PIXEL_ID;
+const utmifyPixelId = import.meta.env.PUBLIC_UTMIFY_PIXEL_ID;
+const gtmId = import.meta.env.PUBLIC_GTM_ID;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO Meta Tags -->
+    <title>{title} | {siteName}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, siteUrl).href} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, siteUrl).href} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts (customize as needed) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global Styles -->
+    <style is:global>
+      @import "../styles/global.css";
+    </style>
+
+    <!-- Google Tag Manager (if configured) -->
+    {
+      gtmId && (
+        <script is:inline define:vars={{ gtmId }}>
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, "script", "dataLayer", gtmId);
+        </script>
+      )
+    }
+
+    <!-- Facebook Pixel (if configured) -->
+    {
+      fbPixelId && (
+        <script is:inline define:vars={{ fbPixelId }}>
+          !(function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+              n.callMethod
+                ? n.callMethod.apply(n, arguments)
+                : n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+          })(
+            window,
+            document,
+            "script",
+            "https://connect.facebook.net/en_US/fbevents.js"
+          );
+          fbq("init", fbPixelId);
+          fbq("track", "PageView");
+        </script>
+      )
+    }
+
+    <!-- UTMify Pixel (if configured) -->
+    {
+      utmifyPixelId && (
+        <script
+          is:inline
+          src={`https://cdn.utmify.com.br/scripts/${utmifyPixelId}/pixel.js`}
+          defer
+        />
+      )
+    }
+
+    <!-- Slot for page-specific head content -->
+    <slot name="head" />
+  </head>
+
+  <body class="min-h-screen bg-background text-text antialiased">
+    <!-- GTM NoScript (if configured) -->
+    {
+      gtmId && (
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+            height="0"
+            width="0"
+            style="display:none;visibility:hidden"
+          />
+        </noscript>
+      )
+    }
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Slot for page-specific scripts -->
+    <slot name="scripts" />
+  </body>
+</html>

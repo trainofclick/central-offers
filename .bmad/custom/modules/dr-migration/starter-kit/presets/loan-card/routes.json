@@ -1,0 +1,48 @@
+{
+  "preset": "loan-card",
+  "description": "Preset para produtos de geração de leads financeiros (empréstimos, cartões de crédito)",
+  "category": "LEAD_GENERATION",
+  "routes": [
+    {
+      "path": "/",
+      "file": "pages/index.astro",
+      "name": "Landing Page",
+      "description": "Página inicial com benefícios e CTAs",
+      "required": true
+    },
+    {
+      "path": "/cadastro",
+      "file": "pages/cadastro.astro",
+      "name": "Lead Form",
+      "description": "Formulário multi-step para captura de dados (CPF, nome, telefone, email)",
+      "required": true
+    },
+    {
+      "path": "/analise",
+      "file": "pages/analise.astro",
+      "name": "Analysis Loading",
+      "description": "Página de loading com animação de análise de perfil",
+      "required": true
+    },
+    {
+      "path": "/resultado",
+      "file": "pages/resultado.astro",
+      "name": "Results Page",
+      "description": "Página de resultados com ofertas de parceiros",
+      "required": true
+    }
+  ],
+  "components": [
+    {
+      "name": "LeadForm",
+      "file": "components/LeadForm.tsx",
+      "type": "react",
+      "description": "Formulário multi-step com validação de CPF, telefone e email"
+    }
+  ],
+  "tracking": {
+    "viewContent": "index",
+    "lead": "cadastro",
+    "completeRegistration": "resultado"
+  }
+}

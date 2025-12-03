@@ -1,0 +1,52 @@
+# BMad Method Workflow Status
+# Generated: 2025-11-27
+# Track: BMad Method (Brownfield)
+
+generated: "2025-11-27"
+project: "Central-Offers-Ezcala"
+project_type: "software"
+selected_track: "method"
+field_type: "brownfield"
+workflow_path: "method-brownfield.yaml"
+
+# STATUS KEY:
+# - required: Must complete to progress
+# - recommended: Strongly suggested
+# - optional: Can skip
+# - conditional: Required if condition met
+# - skipped: User chose not to include
+# - {file-path}: Completed (file created)
+
+workflow_status:
+  # PREREQUISITE - Documentation (for undocumented brownfield)
+  prerequisite:
+    document-project: required  # Analyst - Understand existing codebase
+
+  # PHASE 0 - Discovery (Optional)
+  phase_0_discovery:
+    brainstorm-project: in-progress  # Sessão pausada - Mind Mapping completo, próximo: Morphological Analysis
+    research: skipped
+    product-brief: skipped
+
+  # PHASE 1 - Planning
+  phase_1_planning:
+    prd: required  # PM - PRD focused on new features/changes
+    validate-prd: optional
+    create-design: conditional  # UX Designer - if project has UI
+
+  # PHASE 2 - Solutioning
+  phase_2_solutioning:
+    create-architecture: recommended  # Architect - Integration architecture
+    create-epics-and-stories: required  # PM - Break down PRD
+    test-design: recommended  # TEA - System-level testability
+    validate-architecture: optional
+    implementation-readiness: required  # Gate check before implementation
+
+  # PHASE 3 - Implementation
+  phase_3_implementation:
+    sprint-planning: required  # SM - Creates sprint plan
+
+# NEXT ACTION
+next_workflow: "document-project"
+next_agent: "analyst"
+next_command: "/bmad:bmm:workflows:document-project"

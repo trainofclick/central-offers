@@ -1,0 +1,55 @@
+{
+  "preset": "donate",
+  "description": "Preset para produtos de doação/contribuição PIX",
+  "category": "DONATE",
+  "routes": [
+    {
+      "path": "/",
+      "file": "pages/index.astro",
+      "name": "Landing Page",
+      "description": "VSL ou copy de vendas com CTA para checkout",
+      "required": true
+    },
+    {
+      "path": "/checkout",
+      "file": "pages/checkout.astro",
+      "name": "Checkout",
+      "description": "Seleção de valor e geração de QR Code PIX",
+      "required": true
+    },
+    {
+      "path": "/obrigado",
+      "file": "pages/obrigado.astro",
+      "name": "Thank You",
+      "description": "Página de confirmação pós-pagamento",
+      "required": true
+    },
+    {
+      "path": "/upsell",
+      "file": "pages/upsell.astro",
+      "name": "Upsell",
+      "description": "Oferta adicional após checkout",
+      "required": false
+    }
+  ],
+  "components": [
+    {
+      "name": "DonationSelector",
+      "file": "components/DonationSelector.tsx",
+      "type": "react",
+      "description": "Seletor de valores de doação com visual atrativo"
+    },
+    {
+      "name": "PixQRCode",
+      "file": "components/PixQRCode.tsx",
+      "type": "react",
+      "description": "Exibição do QR Code PIX com countdown"
+    }
+  ],
+  "defaultValues": [27, 47, 97],
+  "tracking": {
+    "viewContent": "index",
+    "initiateCheckout": "checkout",
+    "purchase": "obrigado"
+  }
+}

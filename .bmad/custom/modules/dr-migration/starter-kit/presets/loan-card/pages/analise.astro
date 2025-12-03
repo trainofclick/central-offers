@@ -1,0 +1,236 @@
+---
+/**
+ * Analysis Loading Page - LOAN-CARD Preset
+ * Página de loading com animação de análise de perfil
+ */
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/astro/Section.astro";
+
+const pageTitle = "Analisando seu Perfil";
+const pageDescription = "Aguarde enquanto buscamos as melhores ofertas para você";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Section
+    background="gradient"
+    padding="xl"
+    class="min-h-screen flex items-center"
+  >
+    <div class="w-full max-w-2xl mx-auto text-center">
+      <!-- Loading Animation -->
+      <div class="mb-8">
+        <div class="relative w-32 h-32 mx-auto mb-6">
+          <!-- Outer spinning ring -->
+          <div
+            class="absolute inset-0 border-4 border-primary/20 border-t-primary rounded-full animate-spin"
+          >
+          </div>
+          <!-- Inner icon -->
+          <div
+            class="absolute inset-0 flex items-center justify-center text-4xl"
+          >
+            💳
+          </div>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-bold text-secondary mb-4">
+          Analisando Seu Perfil
+        </h1>
+        <p class="text-text-muted mb-8">
+          Estamos buscando as melhores ofertas para você...
+        </p>
+      </div>
+
+      <!-- Progress Steps -->
+      <div class="space-y-4 max-w-md mx-auto" id="progress-steps">
+        <div
+          class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md opacity-0 translate-x-4 transition-all duration-500"
+          data-step="1"
+        >
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20">
+            <svg
+              class="w-8 h-8 text-primary hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <div
+              class="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin"
+            >
+            </div>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-medium text-secondary">Verificando CPF...</p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md opacity-0 translate-x-4 transition-all duration-500"
+          data-step="2"
+        >
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20">
+            <svg
+              class="w-8 h-8 text-primary hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <div
+              class="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin hidden"
+            >
+            </div>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-medium text-secondary">Analisando perfil...</p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md opacity-0 translate-x-4 transition-all duration-500"
+          data-step="3"
+        >
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20">
+            <svg
+              class="w-8 h-8 text-primary hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <div
+              class="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin hidden"
+            >
+            </div>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-medium text-secondary">Consultando instituições...</p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md opacity-0 translate-x-4 transition-all duration-500"
+          data-step="4"
+        >
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20">
+            <svg
+              class="w-8 h-8 text-primary hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <div
+              class="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin hidden"
+            >
+            </div>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-medium text-secondary">Selecionando melhores ofertas...</p>
+          </div>
+        </div>
+
+        <div
+          class="flex items-center gap-4 p-4 bg-white rounded-lg shadow-md opacity-0 translate-x-4 transition-all duration-500"
+          data-step="5"
+        >
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20">
+            <svg
+              class="w-8 h-8 text-primary hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <div
+              class="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin hidden"
+            >
+            </div>
+          </div>
+          <div class="flex-1 text-left">
+            <p class="font-medium text-secondary">Preparando resultado...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Info -->
+      <div class="mt-12 p-6 bg-white/50 rounded-xl">
+        <p class="text-sm text-text-muted">
+          Estamos comparando ofertas de mais de 50 instituições financeiras
+          para encontrar a melhor opção para você.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Animation Script -->
+  <script>
+    // Animation timing
+    const STEP_DURATION = 1500; // 1.5s per step
+    const TOTAL_STEPS = 5;
+    const TOTAL_DURATION = STEP_DURATION * TOTAL_STEPS + 500; // Total time + buffer
+
+    // Animate steps sequentially
+    function animateSteps() {
+      const steps = document.querySelectorAll("[data-step]");
+
+      steps.forEach((step, index) => {
+        setTimeout(() => {
+          // Show step
+          step.classList.remove("opacity-0", "translate-x-4");
+          step.classList.add("opacity-100", "translate-x-0");
+
+          // Get spinner and checkmark
+          const spinner = step.querySelector(".animate-spin");
+          const checkmark = step.querySelector("svg");
+
+          // After step duration, complete it
+          setTimeout(() => {
+            if (spinner) {
+              spinner.classList.add("hidden");
+            }
+            if (checkmark) {
+              checkmark.classList.remove("hidden");
+            }
+          }, STEP_DURATION - 200);
+        }, index * STEP_DURATION);
+      });
+
+      // Redirect to results after all steps
+      setTimeout(() => {
+        window.location.href = "/resultado";
+      }, TOTAL_DURATION);
+    }
+
+    // Start animation on page load
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", animateSteps);
+    } else {
+      animateSteps();
+    }
+  </script>
+
+  <!-- Prevent back button -->
+  <script>
+    history.pushState(null, "", location.href);
+    window.addEventListener("popstate", () => {
+      history.pushState(null, "", location.href);
+    });
+  </script>
+</BaseLayout>

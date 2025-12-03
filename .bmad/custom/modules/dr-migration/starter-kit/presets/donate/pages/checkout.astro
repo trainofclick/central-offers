@@ -1,0 +1,102 @@
+---
+/**
+ * Checkout Page - DONATE Preset
+ * Seleção de valor e pagamento PIX
+ */
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Section from "@components/astro/Section.astro";
+import Card from "@components/astro/Card.astro";
+import DonationSelector from "../components/DonationSelector";
+import Timer from "@components/react/Timer";
+import { productConfig } from "@lib/config";
+
+const pageTitle = "Checkout - Contribuição";
+const pageDescription = "Escolha seu valor e contribua via PIX";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} noIndex={true}>
+  <Section background="gradient" padding="lg">
+    <div class="max-w-2xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-secondary mb-2">
+          Escolha Sua Contribuição
+        </h1>
+        <p class="text-text-muted">
+          Selecione um valor e finalize via PIX instantâneo
+        </p>
+      </div>
+
+      <!-- Timer -->
+      <div class="text-center mb-6">
+        <Timer
+          client:load
+          initialMinutes={10}
+          prefix="Oferta especial por:"
+        />
+      </div>
+
+      <!-- Donation Selector -->
+      <Card variant="elevated" class="mb-6">
+        <DonationSelector
+          client:load
+          values={productConfig.donationValues}
+        />
+      </Card>
+
+      <!-- Security badges -->
+      <div class="flex items-center justify-center gap-4 text-sm text-text-muted">
+        <span class="flex items-center gap-1">
+          <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          Pagamento Seguro
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          PIX Instantâneo
+        </span>
+        <span class="flex items-center gap-1">
+          <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          Criptografado
+        </span>
+      </div>
+
+      <!-- Summary -->
+      <Card class="mt-6 bg-surface">
+        <h3 class="font-semibold text-secondary mb-3">Resumo</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between">
+            <span class="text-text-muted">Contribuição</span>
+            <span id="selected-value" class="font-medium">R$ 47,00</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-text-muted">Taxa</span>
+            <span class="text-success">Grátis</span>
+          </div>
+          <div class="border-t border-border pt-2 flex justify-between">
+            <span class="font-semibold">Total</span>
+            <span id="total-value" class="font-bold text-primary">R$ 47,00</span>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Back link -->
+      <div class="text-center mt-6">
+        <a href="/" class="text-sm text-text-muted hover:text-primary">
+          ← Voltar para a página inicial
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Track InitiateCheckout -->
+  <script>
+    import { fbEvents } from "@lib/tracking";
+    fbEvents.initiateCheckout({ value: 47 });
+  </script>
+</BaseLayout>

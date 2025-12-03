@@ -1,0 +1,81 @@
+# DR Migration Module Installation Configuration
+# This file defines installation questions and module configuration values
+
+code: dr-migration
+name: "DR Migration"
+default_selected: false
+
+# Welcome message shown during installation
+prompt:
+  - "Bem-vindo ao DR Migration!"
+  - "Sistema de migração HTML para Astro para produtos Direct Response."
+  - "Este módulo inclui 3 agentes especializados e 4 workflows de migração."
+
+# ============================================================================
+# CONFIGURATION FIELDS
+# ============================================================================
+
+# Source folder for HTML files
+source_folder:
+  prompt: "Onde estão os arquivos HTML fonte?"
+  default: "./stitch"
+  result: "{project-root}/{value}"
+
+# Target folder for Astro project
+target_folder:
+  prompt: "Onde criar o projeto Astro?"
+  default: "./astro-project"
+  result: "{project-root}/{value}"
+
+# Product category
+product_category:
+  prompt: "Qual categoria do produto?"
+  default: "auto-detect"
+  result: "{value}"
+  single-select:
+    - value: "donate"
+      label: "DONATE - Produtos de doação/crowdfunding"
+    - value: "loan-card"
+      label: "LOAN-CARD - Produtos financeiros/leads"
+    - value: "auto-detect"
+      label: "AUTO-DETECT - Detectar automaticamente"
+
+# Include tracking snippets
+include_tracking:
+  prompt: "Incluir tracking (UTMify, FB Pixel, Rybbit)?"
+  default: "true"
+  result: "{value}"
+  single-select:
+    - value: "true"
+      label: "Sim - Incluir todos os tracking snippets"
+    - value: "false"
+      label: "Não - Sem tracking"
+
+# Include payment gateway
+include_payment:
+  prompt: "Incluir gateway de pagamento (PIX/Umbrella)?"
+  default: "false"
+  result: "{value}"
+  single-select:
+    - value: "true"
+      label: "Sim - Incluir integração de pagamento"
+    - value: "false"
+      label: "Não - Sem pagamento"
+
+# Include security protections
+include_security:
+  prompt: "Incluir proteções anti-clone (DevTools block, cloaking)?"
+  default: "true"
+  result: "{value}"
+  single-select:
+    - value: "true"
+      label: "Sim - Incluir proteções de segurança"
+    - value: "false"
+      label: "Não - Sem proteções"
+
+# Static values
+starter_kit_version:
+  result: "1.0.0"
+
+module_version:
+  result: "1.0.0"

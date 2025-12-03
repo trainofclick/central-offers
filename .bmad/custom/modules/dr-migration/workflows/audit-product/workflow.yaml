@@ -1,0 +1,48 @@
+# Audit Product Workflow Configuration
+name: audit-product
+description: "Auditoria completa de produto DR migrado (visual, funcional, tracking, segurança, performance)"
+author: "DR Migration Module"
+
+# Critical variables load from config_source
+config_source: "{project-root}/.bmad/dr-migration/config.yaml"
+user_name: "{config_source}:user_name"
+communication_language: "{config_source}:communication_language"
+target_folder: "{config_source}:target_folder"
+output_folder: "{config_source}:output_folder"
+
+# Module paths
+installed_path: "{project-root}/.bmad/dr-migration"
+templates_path: "{installed_path}/templates"
+data_path: "{installed_path}/data"
+
+# Workflow components
+template: "{installed_path}/workflows/audit-product/template.md"
+instructions: "{installed_path}/workflows/audit-product/instructions.md"
+validation: "{data_path}/audit-checklist.csv"
+
+# Output configuration
+default_output_file: "{output_folder}/audit-report-{{date}}.md"
+
+standalone: true
+
+# Audit categories
+audit_categories:
+  - name: "Visual"
+    weight: 25
+    items: 5
+
+  - name: "Funcional"
+    weight: 25
+    items: 5
+
+  - name: "Tracking"
+    weight: 20
+    items: 5
+
+  - name: "Segurança"
+    weight: 15
+    items: 5
+
+  - name: "Performance"
+    weight: 15
+    items: 5

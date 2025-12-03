@@ -1,0 +1,26 @@
+# Quick Migration Workflow Configuration
+name: quick-migration
+description: "Migração rápida para projetos simples (até 3 páginas, sem API)"
+author: "DR Migration Module"
+
+# Critical variables load from config_source
+config_source: "{project-root}/.bmad/dr-migration/config.yaml"
+user_name: "{config_source}:user_name"
+communication_language: "{config_source}:communication_language"
+source_folder: "{config_source}:source_folder"
+target_folder: "{config_source}:target_folder"
+
+# Module paths
+installed_path: "{project-root}/.bmad/dr-migration"
+
+# Workflow components
+template: false  # Action workflow, no template output
+instructions: "{installed_path}/workflows/quick-migration/instructions.md"
+
+standalone: true
+
+# Quick migration is for simple projects only
+constraints:
+  max_pages: 3
+  api_required: false
+  complexity: "Simple"

@@ -1,0 +1,44 @@
+phase,order,task_id,task_name,description,required,category,estimated_minutes,dependencies
+1-analysis,1,AN01,Scan estrutura,Listar todos os arquivos do projeto original,true,analysis,5,
+1-analysis,2,AN02,Identificar páginas,Mapear todas as páginas HTML únicas,true,analysis,10,AN01
+1-analysis,3,AN03,Inventariar assets,Catalogar imagens CSS e JS,true,analysis,10,AN01
+1-analysis,4,AN04,Detectar categoria,Classificar como DONATE ou LOAN-CARD,true,analysis,5,AN02
+1-analysis,5,AN05,Analisar integrações,Identificar pixels tracking e pagamentos,true,analysis,15,AN02
+1-analysis,6,AN06,Calcular complexidade,Aplicar scoring de complexidade,true,analysis,5,AN01;AN02;AN03;AN04;AN05
+1-analysis,7,AN07,Documentar riscos,Listar fatores de risco identificados,true,analysis,10,AN06
+2-setup,1,ST01,Criar projeto Astro,Inicializar projeto com bun create astro,true,setup,5,AN06
+2-setup,2,ST02,Configurar TailwindCSS,Instalar e configurar Tailwind V4,true,setup,10,ST01
+2-setup,3,ST03,Configurar TypeScript,Setup tsconfig e tipos base,true,setup,5,ST01
+2-setup,4,ST04,Criar estrutura pastas,Criar src/pages src/components src/layouts,true,setup,5,ST01
+2-setup,5,ST05,Configurar .env,Criar arquivo de variáveis de ambiente,true,setup,5,ST01
+2-setup,6,ST06,Instalar dependências,Instalar packages necessários,true,setup,10,ST01;ST02;ST03
+3-migration,1,MG01,Migrar layout base,Criar BaseLayout.astro com head e scripts,true,migration,30,ST04
+3-migration,2,MG02,Migrar página index,Converter index.html para index.astro,true,migration,45,MG01
+3-migration,3,MG03,Migrar página checkout,Converter checkout para Astro com formulário,true,migration,60,MG01
+3-migration,4,MG04,Migrar upsells,Converter páginas de upsell se existirem,false,migration,30,MG01
+3-migration,5,MG05,Migrar thank you,Converter página de obrigado,true,migration,20,MG01
+3-migration,6,MG06,Extrair componentes,Criar componentes reutilizáveis,true,migration,45,MG02;MG03
+3-migration,7,MG07,Migrar estilos,Converter CSS para Tailwind classes,true,migration,60,MG02;MG03;MG04;MG05
+3-migration,8,MG08,Migrar scripts,Converter JS para TypeScript,true,migration,45,MG02;MG03
+3-migration,9,MG09,Otimizar imagens,Processar imagens com Astro Image,true,migration,20,MG02
+4-integration,1,IN01,Configurar tracking,Implementar pixels FB UTMify etc,true,integration,30,MG02;MG03
+4-integration,2,IN02,Configurar pagamento,Implementar gateway PIX Umbrella,true,integration,45,MG03
+4-integration,3,IN03,Configurar cloaking,Implementar filtro de bots,false,integration,20,MG01
+4-integration,4,IN04,Configurar segurança,Implementar anti-clone e proteções,false,integration,30,MG01
+4-integration,5,IN05,Configurar analytics,Implementar Rybbit ou similar,false,integration,15,MG01
+5-validation,1,VL01,Build sem erros,Executar bun run build com sucesso,true,validation,5,MG07;MG08
+5-validation,2,VL02,Preview funcional,Testar todas as páginas no preview,true,validation,15,VL01
+5-validation,3,VL03,Testar links,Verificar todos os links internos e externos,true,validation,10,VL02
+5-validation,4,VL04,Testar formulários,Verificar submit e validação,true,validation,15,VL02
+5-validation,5,VL05,Testar tracking,Verificar eventos no pixel helper,true,validation,10,IN01
+5-validation,6,VL06,Testar pagamento,Testar fluxo em sandbox,true,validation,20,IN02
+5-validation,7,VL07,Testar mobile,Verificar responsividade,true,validation,10,VL02
+5-validation,8,VL08,Lighthouse audit,Executar audit e verificar score 90+,true,validation,10,VL01
+5-validation,9,VL09,Console limpo,Verificar ausência de erros no console,true,validation,5,VL02
+6-deploy,1,DP01,Preparar produção,Ajustar .env para produção,true,deploy,10,VL08;VL09
+6-deploy,2,DP02,Build final,Executar build de produção,true,deploy,5,DP01
+6-deploy,3,DP03,Deploy staging,Fazer deploy em ambiente de teste,true,deploy,10,DP02
+6-deploy,4,DP04,Validar staging,Testar funcionalidades em staging,true,deploy,15,DP03
+6-deploy,5,DP05,Deploy produção,Fazer deploy em produção,true,deploy,10,DP04
+6-deploy,6,DP06,Smoke test,Testar fluxo crítico em produção,true,deploy,10,DP05
+6-deploy,7,DP07,Documentar,Atualizar documentação do projeto,true,deploy,20,DP06

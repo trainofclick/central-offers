@@ -1,0 +1,182 @@
+{
+  "main": {
+    "id": "d65cb6fc1535b787",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad178c5c79542f36",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2878c23b73f29286",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nova aba"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "59dc47cbf5d8f3bf",
+    "type": "split",
+    "children": [
+      {
+        "id": "64c4bcb604ce3392",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9045af422b558ffa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "da1003124fa95e02",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "38c9c68b0f1e7bdf",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c49d2019aa53677e",
+    "type": "split",
+    "children": [
+      {
+        "id": "67e386edbd20b63e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f013622178cf8f23",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "b899c0f106d3dc37",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "a44d0294623019e1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "4c73a544c8e56edd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "9045af422b558ffa",
+  "lastOpenFiles": [
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/components/ui/index.ts",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/pages/aplicativo/index.astro",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/pages/aplicativo/dash.astro",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/components/ui/LoadingSpinner.tsx",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/components/ui/FormInput.tsx",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/components/layout/Header.astro",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/components/ui/CreditCard.tsx",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/components/forms/CPFForm.tsx",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/components/ui/Card.tsx",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/components/ui/Button.tsx",
+    "will-offer/archive/paginas-v1-astro-sonnet1/src/components/layout/Footer.astro",
+    "will-offer/archive/paginas-v1-astro-sonnet1/README.md",
+    "will-offer/archive/paginas-v1-astro-sonnet1/MIGRATION-LOG.md",
+    "will-offer/docs/design/style.md"
+  ]
+}

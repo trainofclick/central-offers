@@ -1,0 +1,53 @@
+# Setup Project - Create New DR Project from Starter Kit
+name: "setup-project"
+description: "Cria um novo projeto DR usando o starter-kit com Astro 5.x, TailwindCSS V4 e React 19"
+author: "DR Migration Module"
+version: "1.0.0"
+
+# Config source
+config_source: "{project-root}/.bmad/custom/modules/dr-migration/config.yaml"
+communication_language: "{config_source}:communication_language"
+
+# Starter kit location
+starter_kit_path: "{project-root}/.bmad/custom/modules/dr-migration/starter-kit"
+
+# Workflow components
+installed_path: "{project-root}/.bmad/custom/modules/dr-migration/workflows/setup-project"
+template: false
+instructions: "{installed_path}/instructions.md"
+
+# Input parameters
+inputs:
+  project_name:
+    type: string
+    required: true
+    description: "Nome do projeto (slug, ex: meu-produto)"
+
+  project_path:
+    type: string
+    required: true
+    description: "Caminho onde criar o projeto"
+
+  category:
+    type: enum
+    options: ["DONATE", "LOAN-CARD"]
+    required: true
+    description: "Categoria do produto"
+
+  packages:
+    type: array
+    options: ["tracking", "payment", "security", "ui"]
+    required: false
+    default: ["tracking"]
+    description: "Packages a incluir"
+
+# Output
+outputs:
+  project_created: true
+  project_location: "{project_path}/{project_name}"
+  next_steps:
+    - "cd {project_name}"
+    - "bun install"
+    - "bun run dev"
+
+standalone: true
